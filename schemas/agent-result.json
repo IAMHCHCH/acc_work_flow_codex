@@ -1,0 +1,120 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "blocked"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "component": {
+            "type": "string"
+          },
+          "symptom": {
+            "type": "string"
+          },
+          "root_cause": {
+            "type": "string"
+          },
+          "resolution": {
+            "type": "string"
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "failed_attempts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "component",
+          "symptom",
+          "root_cause",
+          "resolution",
+          "lessons",
+          "failed_attempts",
+          "evidence"
+        ]
+      }
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "amend",
+              "retire",
+              "propose"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "resolution": {
+            "type": "string"
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "action",
+          "reason",
+          "resolution",
+          "lessons",
+          "evidence"
+        ]
+      }
+    }
+  },
+  "required": [
+    "status",
+    "summary",
+    "findings",
+    "revisions"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "repositories": {
+    "kernel": {
+      "path": "/Users/huangchenghai/codeX_test/crypto-2.6",
+      "ref": "HEAD",
+      "config": "/Users/huangchenghai/codeX_test/crypto-2.6/.config"
+    },
+    "uadk": {"path": "/Users/huangchenghai/codeX_test/uadk", "ref": "HEAD"},
+    "uadk_engine": {"path": "/Users/huangchenghai/codeX_test/uadk_engine", "ref": "HEAD"}
+  },
+  "agent": {"kind": "codex", "executable": "codex", "timeout": 1800},
+  "max_attempts": 3,
+  "case_context_limit": 8,
+  "profile": {
+    "name": "hisilicon-lab-via-build-host",
+    "environment": {"hardware": "HiSilicon accelerator", "kernel_release": "target-provided", "arch": "aarch64", "build_host": "huangchenghai@192.168.90.30", "verify_host": "root@192.168.90.141", "bmc": "192.168.90.209"},
+    "deployment_required": true,
+    "deployment_authorized": false,
+    "preflight": [{"argv": ["ssh", "huangchenghai@192.168.90.30", "uname -a && test -d /home/huangchenghai"]}],
+    "baseline": [{"argv": ["ssh", "root@192.168.90.141", "uname -a"], "failure_code": 1}],
+    "baseline_expect": "pass",
+    "build": [{"argv": ["ssh", "huangchenghai@192.168.90.30", "echo build commands must be configured per task"]}],
+    "deploy": [],
+    "verify": [{"argv": ["ssh", "root@192.168.90.141", "uname -a && dmesg --level=err,warn | tail -n 100"]}],
+    "rollback": [],
+    "artifacts": []
+  }
+}
