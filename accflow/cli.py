@@ -40,6 +40,10 @@ def main():
     new.add_argument('--request', required=True)
     new.add_argument('--kind', choices=['bugfix', 'feature'], default='bugfix')
     new.add_argument('--repos', default='uadk', help='Comma-separated repository names')
+    start = sub.add_parser('start', help='Create and run a task from one request')
+    start.add_argument('--request', required=True)
+    start.add_argument('--kind', choices=['bugfix', 'feature', 'analysis'], default='analysis')
+    start.add_argument('--repos', default=None, help='Optional comma-separated repositories; inferred when omitted')
     run = sub.add_parser('run')
     run.add_argument('task_id')
     run.add_argument('--dry-run', action='store_true')
@@ -56,10 +60,14 @@ def main():
         if args.command == 'init':
             (root / '.accflow').mkdir(parents=True, exist_ok=True)
             result = Library(root / 'cases').consolidate()
-        elif args.command in ('doctor', 'new'):
+        elif args.command in ('doctor', 'new', 'start'):
             config = read_json(root / args.config)
-            result = doctor(config) if args.command == 'doctor' else create_task(
-                root, config, args.request, args.kind, args.repos.split(','))
+            if args.command == 'doctor':
+                result = doctor(config)
+            else:
+                names = args.repos.split(',') if args.repos else list(config['repositories'])
+                task = create_task(root, config, args.request, args.kind, names)
+                result = task if args.command == 'new' else Runner(root, task['id']).run()
         elif args.command in ('run', 'status', 'recover'):
             runner = Runner(root, args.task_id)
             result = runner.task if args.command == 'status' else (
