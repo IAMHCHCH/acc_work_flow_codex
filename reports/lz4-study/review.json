@@ -1,0 +1,84 @@
+{
+  "status": "ready",
+  "summary": "保留 423 次基线，追加 80 个官方 LZ77 实验及 248 个独立实验；完成双设备 NUMA 和窗口配置优化，官方约 15.974 GB/s、组装 LZ4 约 15.880 GB/s；修订单设备交叉点历史。深度 32 的可恢复 ZIP 超时根因未证实。",
+  "findings": [
+    {
+      "title": "UADK 运行库一致性与 NUMA 初始化",
+      "component": "uadk-runtime",
+      "symptom": "undefined symbol wd_alg_match_drv；默认 thread_num=0 时在 NUMA bitmap 复制中崩溃",
+      "root_cause": "混用系统运行库且传递空用户 NUMA bitmap；全局初始化复用未保证同时存在同步和异步队列",
+      "resolution": "隔离同次构建的 libwd/libwd_comp/libhisi_zip，核对动态加载路径与 SHA-256；始终分配 bitmap；统一初始化分配两种队列",
+      "lessons": ["版本号相同不等于 ABI 一致，必须核对加载路径和二进制身份", "复用全局运行时前验证所有调用模式所需资源"],
+      "failed_attempts": ["仅修补 lz4_uadk 应用而继续混用目标机系统 UADK 库"],
+      "evidence": ["reports/lz4-study/raw/environment.json", "reports/lz4-study/raw/functional-retest.log"]
+    },
+    {
+      "title": "异步非阻塞完成与请求所有权",
+      "component": "lz4-uadk-async",
+      "symptom": "一次 poll 没有输出即判失败；输入提前复用或输出空间不足导致结果丢失风险",
+      "root_cause": "测试误解非阻塞 poll；硬件请求引用调用方缓冲区；完成结果在写入成功前推进序号；提交未处理短暂背压",
+      "resolution": "有截止时间地轮询；请求引用 slot 自有副本；ENOSPC 保留结果并可重试；推进序号与统计仅在成功消费后发生；基准程序 poll 后重试 EBUSY/EAGAIN",
+      "lessons": ["验证队列满、输入立即覆写、顺序和缓冲区不足重试", "last=1 是独立无状态硬件块的结束，不是上层批次结束标志", "不能由用户态背压处理通过推断历史硬件超时根因已经修复"],
+      "failed_attempts": ["曾尝试把硬件 req.last 改为上层批次 last，确认语义后撤回", "首次 32 核矩阵未处理提交背压而中止"],
+      "evidence": ["reports/lz4-study/raw/async-regression.log", "reports/lz4-study/raw/scaling-before-backpressure.log", "reports/lz4-study/raw/stress-32core.log"]
+    },
+    {
+      "title": "LZ4 块格式需要原生解码器交叉验证",
+      "component": "lz4-uadk-assembly",
+      "symptom": "自带解码器通过但原生 LZ4_decompress_safe 拒绝 Dickens 压缩块",
+      "root_cause": "组装未落实块尾字面量约束；offset 校验重复计入 pending 字节；自带编码器和解码器共享容忍性",
+      "resolution": "末尾匹配转换成字面量，保留安全尾部；修正 offset 和源边界检查；所有最终基准输入块均用原生解码器逐字节校验",
+      "lessons": ["必须用独立实现验证格式兼容性", "当前私有 12 字节封装不等于标准 LZ4F，报告区分 block 与 frame"],
+      "failed_attempts": ["仅凭原仓库 roundtrip 通过判断标准 LZ4 兼容"],
+      "evidence": ["reports/lz4-study/patches/lz4-uadk-fixes.patch", "reports/lz4-study/raw/screen.csv", "reports/lz4-study/raw/async-regression.log"]
+    },
+    {
+      "title": "压缩卸载比较必须检查实际 CPU 亲和性和内容",
+      "component": "lz4-benchmark",
+      "symptom": "外层 taskset 后仍无法保证软硬件使用相同 CPU；不同输入产生相反性能结论",
+      "root_cause": "原基准硬件清理调用 numa_run_on_node 扩大 CPU 集合；只用高度重复输入推断所有场景；原统计粒度过短",
+      "resolution": "独立基准每工作线程绑单核并审计进程所有线程；按拓扑排除 SMT 同胞；相同输入和块边界、计时预热分离、三次重复；CPU 成本用 process CPU 秒/GB 表示",
+      "lessons": ["taskset 不是不能被程序修改的 cpuset 屏障", "本机 Dickens 64 KiB 异步单核为软件 1.82 倍，14 至 15 物理核发生反超；仅在记录的环境和策略范围有效", "硬件卸载仍有 CPU 轮询和组装成本；合成随机/强重复数据上软件更快", "原始证据保留，旧推断可被新数据取代，不把每个测试点归档成独立案例"],
+      "failed_attempts": ["旧 thread_scaling_retest.txt 不作为最终严格绑核证据"],
+      "evidence": ["reports/lz4-study/lz4-controlled.csv", "reports/lz4-study/summary.csv", "reports/lz4-study/REPORT.md"]
+    },
+    {
+      "title": "分配双设备队列不等于实际调度到双设备",
+      "component": "uadk-numa-scheduling",
+      "symptom": "两个 ZIP 均有队列但组装 LZ4 平台只有约 4.25 GB/s，第二个设备完成数为零",
+      "root_cause": "UADK RR 默认按 session 创建线程的 NUMA 节点选择 region；所有 session 在 NUMA 0 主线程创建",
+      "resolution": "新增显式 NUMA session API，基准按工作 CPU 选择设备及本地首次触碰内存；通过反向节点创建和设备完成计数验证，原 32 KiB 窗口平台提升到约 8.5 GB/s",
+      "lessons": ["必须观察逐设备完成计数，不能用队列分配数推断流量分布", "相同窗口与内容下比较 NUMA 调度改进，避免混入压缩率变化", "新证据限定旧的 14–15 核结论；双设备 32 KiB 窗口交叉点为 29–30 核"],
+      "failed_attempts": ["原基准已严格绑核，但未确认 session 创建节点与工作线程一致"],
+      "evidence": ["reports/lz4-study/CEILING.md", "reports/lz4-study/raw/optimized/summary.json", "reports/lz4-study/raw/diagnostics/window-node0-test.json", "reports/lz4-study/raw/diagnostics/window-node1-test.json"]
+    },
+    {
+      "title": "LZ77 匹配窗口决定有效带宽与压缩率取舍",
+      "component": "lz4-uadk-window",
+      "symptom": "双设备 64 KiB 块和 32 KiB 窗口只能达到约 8.5 GB/s，低于用户 15 GB/s 参考值",
+      "root_cause": "封装硬编码 32 KiB 匹配窗口；官方及同输入 raw 对照证实 16/24/32 KiB 窗口对应较低带宽，4/8 KiB 可接近 16 GB/s；具体硬件内部周期机制未测明",
+      "resolution": "同步参数实际传递 window_size，异步增加显式窗口 API，默认仍为 32 KiB；8 KiB 在 48 核组装 LZ4 达约 15.880 GB/s，同时记录 Dickens 输出比例由约 58.50% 增至 62.46%",
+      "lessons": ["输入块大小和匹配窗口是两个参数，必须分别记录", "官方工具需 --complevel 8；--winsize 1 表示 8 KiB，默认等级 0 可出现返回成功但零吞吐", "官方原始 LZ77 吞吐不等于 LZ4 压缩率，关键带宽优先使用同步数据并由原生 LZ4 另行验证内容", "不能把多核平台提高解释成单核也提高；8 KiB 窗口 Dickens 单核异步约 0.465 GB/s，低于 32 KiB 的约 0.521 GB/s"],
+      "failed_attempts": ["尝试仅增加队列和线程，32 KiB 窗口的平台基本不变", "直接读取 MMIO 性能模式寄存器映射失败，不据此断言实际寄存器位"],
+      "evidence": ["reports/lz4-study/CEILING.md", "reports/lz4-study/official-summary.csv", "reports/lz4-study/optimization-summary.csv", "reports/lz4-study/window-compression.csv", "reports/lz4-study/patches/lz4-uadk-window-full.patch"]
+    }
+  ],
+  "revisions": [
+    {
+      "case_id": "LZ4-CONTROLLED-20260907-04",
+      "action": "amend",
+      "reason": "追加逐设备计数证实原曲线仅使用一个 ZIP，新增双设备与窗口对照限定旧结论适用范围",
+      "resolution": "保持每线程单核及全进程 affinity 检查；增加显式 NUMA session、每设备完成计数、窗口配置和压缩率记录。原 14–15 核交叉点仅适用于单设备 32 KiB 窗口；双设备 32 KiB 为 29–30 核，8 KiB 为 52–56 核，均为本机 Dickens 64 KiB 输入块实测区间。",
+      "lessons": ["taskset 不是不可修改的 cpuset 屏障，且严格绑核不自动保证双设备负载均衡", "原 423 个样本保留；原单核 1.82 倍优势仍有效，14–15 核交叉点已限定为旧单设备策略", "匹配窗口缩小提高平台但可能降低压缩率及单核效率，不能混为同一条件收益", "所有设备测试串行，官方确认与功能回归重叠的整批保留为历史并排除，使用后续串行重测结果", "原始证据与修订事件一起保留，不把每个测量点扩充为案例"],
+      "evidence": ["reports/lz4-study/CEILING.md", "reports/lz4-study/raw/optimized/summary.json", "reports/lz4-study/optimization-summary.csv", "reports/lz4-study/official-summary.csv"]
+    },
+    {
+      "case_id": "LZ4-CONTROLLED-20260907-02",
+      "action": "amend",
+      "reason": "追加深度 32 触发新的可恢复 QM 超时，需要收紧稳定性结论而非隐藏失败",
+      "resolution": "保留已修复的输入所有权、ENOSPC 保留与提交背压处理；默认基准使用已验证深度 8。追加深度 32 返回 -62 并触发 qm_db_timeout，驱动自动复位；失败不参加性能统计，降低深度不视为内核根因修复。",
+      "lessons": ["短时非阻塞无结果和硬件超时必须区分", "64 请求所有权/顺序/ENOSPC 回归与 30 秒深度 8 压力通过，不等于全部深度长期稳定", "保留 optimized-103 失败与 11:46:25 内核证据；后续窗口矩阵无新增 ZIP 超时", "硬件错误不得伪装成压缩成功或静默软件回退"],
+      "evidence": ["reports/lz4-study/CEILING.md", "reports/lz4-study/raw/diagnostics/lz4-depth32-kernel.log", "reports/lz4-study/raw/optimized/optimized-103.json", "reports/lz4-study/raw/diagnostics/window-async-regression.log"]
+    }
+  ]
+}

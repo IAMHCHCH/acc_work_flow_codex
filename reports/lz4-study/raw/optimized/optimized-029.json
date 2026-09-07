@@ -1,0 +1,1699 @@
+{
+  "repeat": 1,
+  "cores": 32,
+  "mode": "sync",
+  "depth": 8,
+  "seconds": 2,
+  "cpus": [
+    [
+      0,
+      64,
+      2,
+      66,
+      4,
+      68,
+      6,
+      70,
+      8,
+      72,
+      10,
+      74,
+      12,
+      76,
+      14,
+      78,
+      16,
+      80,
+      18,
+      82,
+      20,
+      84,
+      22,
+      86,
+      24,
+      88,
+      26,
+      90,
+      28,
+      92,
+      30,
+      94
+    ]
+  ],
+  "name": "optimized-029",
+  "commands": [
+    [
+      "taskset",
+      "-c",
+      "0,64,2,66,4,68,6,70,8,72,10,74,12,76,14,78,16,80,18,82,20,84,22,86,24,88,26,90,28,92,30,94",
+      "/tmp/accflow-lz4-unified/controlled_bench_numa",
+      "sync",
+      "32",
+      "65536",
+      "/root/hch/silesia/dickens",
+      "2",
+      "8"
+    ]
+  ],
+  "started": 1788752612.1234727,
+  "ended": 1788752614.5310175,
+  "returncodes": [
+    0
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/accflow-lz4-unified/.libs:/usr/lib64",
+    "LZ4_UADK_QUIET": "1",
+    "LZ4_UADK_HW_CONCURRENCY": "0",
+    "LZ4_BENCH_LOCAL": "1"
+  },
+  "completed_descriptors": {
+    "0000:33:00.0": 132386,
+    "0000:31:00.0": 131386
+  },
+  "before": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 70115348,
+        "HZIP_GET_RIGHT_BD": 70115348,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 70115348,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 122659,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 70114168,
+        "HZIP_GET_RIGHT_BD": 70114168,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 70114168,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11843381,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 122694,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 61087657,
+        "HZIP_GET_RIGHT_BD": 61087657,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 61087657,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 10022699,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 122810,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 61086878,
+        "HZIP_GET_RIGHT_BD": 61086878,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 61086878,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 10046980,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 122724,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "after": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 70181555,
+        "HZIP_GET_RIGHT_BD": 70181555,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 70181555,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 232385,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 70180347,
+        "HZIP_GET_RIGHT_BD": 70180347,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 70180347,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11843381,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 240087,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 61153315,
+        "HZIP_GET_RIGHT_BD": 61153315,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 61153315,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 10022699,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 140307,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 61152606,
+        "HZIP_GET_RIGHT_BD": 61152606,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 61152606,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 10046980,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 118663,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "affinity_samples": [
+    [
+      {
+        "pid": 16937,
+        "masks": []
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            24
+          ],
+          [
+            26
+          ],
+          [
+            28
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ],
+          [
+            88
+          ],
+          [
+            90
+          ],
+          [
+            92
+          ],
+          [
+            94
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16937,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86,
+            88,
+            90,
+            92,
+            94
+          ]
+        ]
+      }
+    ]
+  ],
+  "stdout": [
+    "sync,32,65536,/root/hch/silesia/dickens,2.000515,16908069090,9890232984,258780,8451.859,63.903326,63.903938,31.943747,0.584942,8,PASS,0\n"
+  ]
+}

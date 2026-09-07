@@ -1,0 +1,25 @@
+{
+  "repositories": {
+    "uadk": {"path": "/absolute/path/to/uadk", "ref": "HEAD"},
+    "kernel": {"path": "/absolute/path/to/crypto-2.6", "ref": "HEAD", "config": "/absolute/path/to/crypto-2.6/.config"}
+  },
+  "max_attempts": 3, "case_context_limit": 8,
+  "profile": {
+    "name": "my-lab", "deployment_authorized": false,
+    "environment": {
+      "hardware": "Fill chip model and accelerator generation",
+      "kernel_release": "Fill uname -r", "arch": "aarch64",
+      "build_host": "user@build-host-or-ssh-alias",
+      "verify_host": "user@verify-host-or-ssh-alias",
+      "remote_workdir": "/tmp/accflow",
+      "bmc": {
+        "jump_host": "build-host-or-ssh-alias", "host": "bmc-host",
+        "control_port": 10008, "console_port": 10006,
+        "reset_command": "sh /home/reset_chip.sh 0", "boot_timeout_seconds": 900,
+        "network_restore": "Describe persistent network configuration or a recovery script"
+      },
+      "devices": [],
+      "runtime_strategy": "Isolated shared libraries; record loaded paths and hashes"
+    }
+  }
+}

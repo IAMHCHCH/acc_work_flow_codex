@@ -1,0 +1,812 @@
+{
+  "repeat": 1,
+  "block": 65536,
+  "mode": "sync",
+  "threads_per_device": 8,
+  "contexts_per_device": 8,
+  "cores": 16,
+  "nodes": [
+    0,
+    1
+  ],
+  "seconds": 3,
+  "cpus": [
+    [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    [
+      64,
+      66,
+      68,
+      70,
+      72,
+      74,
+      76,
+      78
+    ]
+  ],
+  "window": 2,
+  "name": "official-fine-025",
+  "commands": [
+    [
+      "numactl",
+      "--physcpubind=0,2,4,6,8,10,12,14",
+      "--membind=0",
+      "/tmp/accflow-lz4-unified/uadk_tool",
+      "benchmark",
+      "--alg",
+      "lz77_only",
+      "--mode",
+      "sva",
+      "--opt",
+      "0",
+      "--sync",
+      "--pktlen",
+      "65536",
+      "--seconds",
+      "3",
+      "--thread",
+      "8",
+      "--ctxnum",
+      "8",
+      "--device",
+      "hisi_zip-1",
+      "--prefetch",
+      "--complevel",
+      "8",
+      "--winsize",
+      "2"
+    ],
+    [
+      "numactl",
+      "--physcpubind=64,66,68,70,72,74,76,78",
+      "--membind=1",
+      "/tmp/accflow-lz4-unified/uadk_tool",
+      "benchmark",
+      "--alg",
+      "lz77_only",
+      "--mode",
+      "sva",
+      "--opt",
+      "0",
+      "--sync",
+      "--pktlen",
+      "65536",
+      "--seconds",
+      "3",
+      "--thread",
+      "8",
+      "--ctxnum",
+      "8",
+      "--device",
+      "hisi_zip-0",
+      "--prefetch",
+      "--complevel",
+      "8",
+      "--winsize",
+      "2"
+    ]
+  ],
+  "started": 1788752457.3787353,
+  "ended": 1788752460.586333,
+  "returncodes": [
+    0,
+    0
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/accflow-lz4-unified/.libs:/usr/lib64",
+    "LZ4_UADK_QUIET": "1",
+    "LZ4_UADK_HW_CONCURRENCY": "0"
+  },
+  "completed_descriptors": {
+    "0000:33:00.0": 195151,
+    "0000:31:00.0": 195047
+  },
+  "before": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 69159742,
+        "HZIP_GET_RIGHT_BD": 69159742,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69159742,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 64134,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 69158639,
+        "HZIP_GET_RIGHT_BD": 69158639,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69158639,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11705952,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 64108,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 60147340,
+        "HZIP_GET_RIGHT_BD": 60147340,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60147340,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9601083,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 64030,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 60146528,
+        "HZIP_GET_RIGHT_BD": 60146528,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60146528,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9977004,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 64148,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "after": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 69257318,
+        "HZIP_GET_RIGHT_BD": 69257318,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69257318,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 121487,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 69256214,
+        "HZIP_GET_RIGHT_BD": 69256214,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69256214,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11705952,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 121540,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 60244863,
+        "HZIP_GET_RIGHT_BD": 60244863,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60244863,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9601083,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 121463,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 60244052,
+        "HZIP_GET_RIGHT_BD": 60244052,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60244052,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9977004,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 121431,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "affinity_samples": [
+    [
+      {
+        "pid": 16053,
+        "masks": []
+      },
+      {
+        "pid": 16054,
+        "masks": []
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16053,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 16054,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ]
+  ],
+  "stdout": [
+    "start UADK benchmark test.\n    [--algname]: lz77_only\n    [--mode]:    1\n    [--optype]:  0\n    [--syncmode]:0\n    [--pktlen]:  65536\n    [--seconds]: 3\n    [--thread]:  8\n    [--multi]:   1\n    [--ctxnum]:  8\n    [--algclass]:lz77_only\n    [--acctype]: 2\n    [--prefetch]:1\n    [--engine]:  \n    [--latency]: 0\n    [--init2]:   0\n    [--device]:  hisi_zip-1\n    [--sched]:   0\n    [--task]:    0\nalgname:\tlength:\t\tperf:\t\tiops:\t\tCPU_rate:\nlz77_only\t65536Bytes \t4163221.33KiB/s\t65.1Kops \t800.00%\ncompress data rate: 100.0%!\n",
+    "start UADK benchmark test.\n    [--algname]: lz77_only\n    [--mode]:    1\n    [--optype]:  0\n    [--syncmode]:0\n    [--pktlen]:  65536\n    [--seconds]: 3\n    [--thread]:  8\n    [--multi]:   1\n    [--ctxnum]:  8\n    [--algclass]:lz77_only\n    [--acctype]: 2\n    [--prefetch]:1\n    [--engine]:  \n    [--latency]: 0\n    [--init2]:   0\n    [--device]:  hisi_zip-0\n    [--sched]:   0\n    [--task]:    0\nalgname:\tlength:\t\tperf:\t\tiops:\t\tCPU_rate:\nlz77_only\t65536Bytes \t4161002.67KiB/s\t65.0Kops \t799.67%\ncompress data rate: 100.0%!\n"
+  ]
+}

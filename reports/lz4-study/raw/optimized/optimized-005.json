@@ -1,0 +1,428 @@
+{
+  "repeat": 1,
+  "cores": 2,
+  "mode": "sync",
+  "depth": 8,
+  "seconds": 2,
+  "cpus": [
+    [
+      0,
+      64
+    ]
+  ],
+  "name": "optimized-005",
+  "commands": [
+    [
+      "taskset",
+      "-c",
+      "0,64",
+      "/tmp/accflow-lz4-unified/controlled_bench_numa",
+      "sync",
+      "2",
+      "65536",
+      "/root/hch/silesia/dickens",
+      "2",
+      "8"
+    ]
+  ],
+  "started": 1788752557.7307544,
+  "ended": 1788752559.934975,
+  "returncodes": [
+    0
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/accflow-lz4-unified/.libs:/usr/lib64",
+    "LZ4_UADK_QUIET": "1",
+    "LZ4_UADK_HW_CONCURRENCY": "0",
+    "LZ4_BENCH_LOCAL": "1"
+  },
+  "completed_descriptors": {
+    "0000:33:00.0": 13227,
+    "0000:31:00.0": 13234
+  },
+  "before": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 69369716,
+        "HZIP_GET_RIGHT_BD": 69369716,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69369716,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 80843,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 69368613,
+        "HZIP_GET_RIGHT_BD": 69368613,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69368613,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11705952,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 80262,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 60342507,
+        "HZIP_GET_RIGHT_BD": 60342507,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60342507,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9601083,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 121434,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 60341695,
+        "HZIP_GET_RIGHT_BD": 60341695,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60341695,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9977004,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 121574,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "after": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 69376330,
+        "HZIP_GET_RIGHT_BD": 69376330,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69376330,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 41533,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 69375226,
+        "HZIP_GET_RIGHT_BD": 69375226,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 69375226,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11705952,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 41527,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 60349124,
+        "HZIP_GET_RIGHT_BD": 60349124,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60349124,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9601083,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 41525,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 60348312,
+        "HZIP_GET_RIGHT_BD": 60348312,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 60348312,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9977004,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 41519,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "affinity_samples": [
+    [
+      {
+        "pid": 16460,
+        "masks": []
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 16460,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ]
+  ],
+  "stdout": [
+    "sync,2,65536,/root/hch/silesia/dickens,2.000135,1708526644,999406722,26149,854.206,3.996553,3.996623,1.998177,0.584952,8,PASS,0\n"
+  ]
+}

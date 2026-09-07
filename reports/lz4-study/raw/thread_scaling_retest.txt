@@ -1,0 +1,293 @@
+
+Authorized users only. All activities may be monitored and reported.
+=== n=1 cpus=0 ===
+
+=== Hardware Devices ===
+  hisi_zip-0: node=-1, available=64
+  hisi_zip-1: node=-1, available=64
+  Total available instances: 128
+Hardware node: auto-detect failed (default: 0)
+NUMA binding disabled (using all devices)
+NUMA nodes: 2
+Current node: 0
+Binding: none (default)
+
+========================================
+Thread Scaling Test (Block: 64 KB)
+========================================
+
+Device instances before test: 126
+Async mode: disabled (higher throughput) (Use -a to enable async for lower CPU usage)
+
+--- Testing 1 threads ---
+  Hardware: 682.99 MB/s
+  Software: 890.06 MB/s
+
+=== Thread Scaling Comparison (Async mode: disabled) ===
+
+Threads       HW MB/s      SW MB/s      HW/SW    HW CPU%    SW CPU%      Async
+--------     --------     --------   --------   --------   --------   --------
+1              682.99       890.06       1.30x     100.0%     100.0%       No
+
+=== Device Usage ===
+  Before: 126 instances
+  After:  126 instances
+  Used:   0 instances
+  hisi_zip-0: used=1, available=63
+  hisi_zip-1: used=1, available=63
+CSV output: thread_scaling.csv
+=== n=2 cpus=0,2 ===
+
+=== Hardware Devices ===
+  hisi_zip-0: node=-1, available=64
+  hisi_zip-1: node=-1, available=64
+  Total available instances: 128
+Hardware node: auto-detect failed (default: 0)
+NUMA binding disabled (using all devices)
+NUMA nodes: 2
+Current node: 0
+Binding: none (default)
+
+========================================
+Thread Scaling Test (Block: 64 KB)
+========================================
+
+Device instances before test: 126
+Async mode: disabled (higher throughput) (Use -a to enable async for lower CPU usage)
+
+--- Testing 1 threads ---
+  Hardware: 690.00 MB/s
+  Software: 887.28 MB/s
+
+--- Testing 2 threads ---
+  Hardware: 1387.66 MB/s
+  Software: 1771.54 MB/s
+
+=== Thread Scaling Comparison (Async mode: disabled) ===
+
+Threads       HW MB/s      SW MB/s      HW/SW    HW CPU%    SW CPU%      Async
+--------     --------     --------   --------   --------   --------   --------
+1              690.00       887.28       1.29x     100.0%     100.0%       No
+2             1387.66      1771.54       1.28x     100.0%     100.0%       No
+
+=== Device Usage ===
+  Before: 126 instances
+  After:  126 instances
+  Used:   0 instances
+  hisi_zip-0: used=1, available=63
+  hisi_zip-1: used=1, available=63
+CSV output: thread_scaling.csv
+=== n=4 cpus=0,2,4,6 ===
+
+=== Hardware Devices ===
+  hisi_zip-0: node=-1, available=64
+  hisi_zip-1: node=-1, available=64
+  Total available instances: 128
+Hardware node: auto-detect failed (default: 0)
+NUMA binding disabled (using all devices)
+NUMA nodes: 2
+Current node: 0
+Binding: none (default)
+
+========================================
+Thread Scaling Test (Block: 64 KB)
+========================================
+
+Device instances before test: 124
+Async mode: disabled (higher throughput) (Use -a to enable async for lower CPU usage)
+
+--- Testing 1 threads ---
+  Hardware: 688.48 MB/s
+  Software: 889.68 MB/s
+
+--- Testing 2 threads ---
+  Hardware: 1391.52 MB/s
+  Software: 1766.53 MB/s
+
+--- Testing 4 threads ---
+  Hardware: 2771.62 MB/s
+  Software: 3539.57 MB/s
+
+=== Thread Scaling Comparison (Async mode: disabled) ===
+
+Threads       HW MB/s      SW MB/s      HW/SW    HW CPU%    SW CPU%      Async
+--------     --------     --------   --------   --------   --------   --------
+1              688.48       889.68       1.29x     100.0%     100.0%       No
+2             1391.52      1766.53       1.27x     100.0%     100.0%       No
+4             2771.62      3539.57       1.28x     100.0%      66.7%       No
+
+=== Device Usage ===
+  Before: 124 instances
+  After:  124 instances
+  Used:   0 instances
+  hisi_zip-0: used=2, available=62
+  hisi_zip-1: used=2, available=62
+CSV output: thread_scaling.csv
+=== n=8 cpus=0,2,4,6,8,10,12,14 ===
+
+=== Hardware Devices ===
+  hisi_zip-0: node=-1, available=64
+  hisi_zip-1: node=-1, available=64
+  Total available instances: 128
+Hardware node: auto-detect failed (default: 0)
+NUMA binding disabled (using all devices)
+NUMA nodes: 2
+Current node: 0
+Binding: none (default)
+
+========================================
+Thread Scaling Test (Block: 64 KB)
+========================================
+
+Device instances before test: 120
+Async mode: disabled (higher throughput) (Use -a to enable async for lower CPU usage)
+
+--- Testing 1 threads ---
+  Hardware: 692.75 MB/s
+  Software: 890.44 MB/s
+
+--- Testing 2 threads ---
+  Hardware: 1388.89 MB/s
+  Software: 1775.82 MB/s
+
+--- Testing 4 threads ---
+  Hardware: 2766.71 MB/s
+  Software: 3530.57 MB/s
+
+--- Testing 8 threads ---
+  Hardware: 4019.29 MB/s
+  Software: 7033.34 MB/s
+
+=== Thread Scaling Comparison (Async mode: disabled) ===
+
+Threads       HW MB/s      SW MB/s      HW/SW    HW CPU%    SW CPU%      Async
+--------     --------     --------   --------   --------   --------   --------
+1              692.75       890.44       1.29x       0.0%     100.0%       No
+2             1388.89      1775.82       1.28x     100.0%     100.0%       No
+4             2766.71      3530.57       1.28x     100.0%     100.0%       No
+8             4019.29      7033.34       1.75x      90.0%     100.0%       No
+
+=== Device Usage ===
+  Before: 120 instances
+  After:  120 instances
+  Used:   0 instances
+  hisi_zip-0: used=4, available=60
+  hisi_zip-1: used=4, available=60
+CSV output: thread_scaling.csv
+=== n=16 cpus=0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30 ===
+
+=== Hardware Devices ===
+  hisi_zip-0: node=-1, available=64
+  hisi_zip-1: node=-1, available=64
+  Total available instances: 128
+Hardware node: auto-detect failed (default: 0)
+NUMA binding disabled (using all devices)
+NUMA nodes: 2
+Current node: 0
+Binding: none (default)
+
+========================================
+Thread Scaling Test (Block: 64 KB)
+========================================
+
+Device instances before test: 112
+Async mode: disabled (higher throughput) (Use -a to enable async for lower CPU usage)
+
+--- Testing 1 threads ---
+  Hardware: 692.67 MB/s
+  Software: 891.46 MB/s
+
+--- Testing 2 threads ---
+  Hardware: 1388.89 MB/s
+  Software: 1770.79 MB/s
+
+--- Testing 4 threads ---
+  Hardware: 2780.56 MB/s
+  Software: 3540.07 MB/s
+
+--- Testing 8 threads ---
+  Hardware: 4024.79 MB/s
+  Software: 7045.23 MB/s
+
+--- Testing 16 threads ---
+  Hardware: 4143.02 MB/s
+  Software: 14060.74 MB/s
+
+=== Thread Scaling Comparison (Async mode: disabled) ===
+
+Threads       HW MB/s      SW MB/s      HW/SW    HW CPU%    SW CPU%      Async
+--------     --------     --------   --------   --------   --------   --------
+1              692.67       891.46       1.29x     100.0%       0.0%       No
+2             1388.89      1770.79       1.27x     100.0%     100.0%       No
+4             2780.56      3540.07       1.27x     100.0%     100.0%       No
+8             4024.79      7045.23       1.75x     100.0%      50.0%       No
+16            4143.02     14060.74       3.39x      90.3%     100.0%       No
+
+=== Device Usage ===
+  Before: 112 instances
+  After:  112 instances
+  Used:   0 instances
+  hisi_zip-0: used=8, available=56
+  hisi_zip-1: used=8, available=56
+CSV output: thread_scaling.csv
+=== n=32 cpus=0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62 ===
+
+=== Hardware Devices ===
+  hisi_zip-0: node=-1, available=64
+  hisi_zip-1: node=-1, available=64
+  Total available instances: 128
+Hardware node: auto-detect failed (default: 0)
+NUMA binding disabled (using all devices)
+NUMA nodes: 2
+Current node: 0
+Binding: none (default)
+
+========================================
+Thread Scaling Test (Block: 64 KB)
+========================================
+
+Device instances before test: 96
+Async mode: disabled (higher throughput) (Use -a to enable async for lower CPU usage)
+
+--- Testing 1 threads ---
+  Hardware: 694.37 MB/s
+  Software: 896.44 MB/s
+
+--- Testing 2 threads ---
+  Hardware: 1388.43 MB/s
+  Software: 1775.57 MB/s
+
+--- Testing 4 threads ---
+  Hardware: 2773.16 MB/s
+  Software: 3556.19 MB/s
+
+--- Testing 8 threads ---
+  Hardware: 4041.38 MB/s
+  Software: 7054.18 MB/s
+
+--- Testing 16 threads ---
+  Hardware: 4176.93 MB/s
+  Software: 14158.29 MB/s
+
+--- Testing 32 threads ---
+  Hardware: 3909.07 MB/s
+  Software: 28288.54 MB/s
+
+=== Thread Scaling Comparison (Async mode: disabled) ===
+
+Threads       HW MB/s      SW MB/s      HW/SW    HW CPU%    SW CPU%      Async
+--------     --------     --------   --------   --------   --------   --------
+1              694.37       896.44       1.29x     100.0%     100.0%       No
+2             1388.43      1775.57       1.28x     100.0%     100.0%       No
+4             2773.16      3556.19       1.28x     100.0%     100.0%       No
+8             4041.38      7054.18       1.75x     100.0%      71.4%       No
+16            4176.93     14158.29       3.39x      85.5%     100.0%       No
+32            3909.07     28288.54       7.24x      93.7%     100.0%       No
+
+=== Device Usage ===
+  Before: 96 instances
+  After:  96 instances
+  Used:   0 instances
+  hisi_zip-0: used=16, available=48
+  hisi_zip-1: used=16, available=48
+CSV output: thread_scaling.csv

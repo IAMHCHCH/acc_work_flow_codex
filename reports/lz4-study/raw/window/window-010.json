@@ -1,0 +1,1334 @@
+{
+  "repeat": 1,
+  "cores": 24,
+  "mode": "sw",
+  "depth": 8,
+  "seconds": 2,
+  "cpus": [
+    [
+      0,
+      64,
+      2,
+      66,
+      4,
+      68,
+      6,
+      70,
+      8,
+      72,
+      10,
+      74,
+      12,
+      76,
+      14,
+      78,
+      16,
+      80,
+      18,
+      82,
+      20,
+      84,
+      22,
+      86
+    ]
+  ],
+  "window_kb": 8,
+  "block": 65536,
+  "dataset": "dickens",
+  "name": "window-010",
+  "commands": [
+    [
+      "taskset",
+      "-c",
+      "0,64,2,66,4,68,6,70,8,72,10,74,12,76,14,78,16,80,18,82,20,84,22,86",
+      "/tmp/accflow-lz4-unified/controlled_bench_window",
+      "sw",
+      "24",
+      "65536",
+      "/root/hch/silesia/dickens",
+      "2",
+      "8"
+    ]
+  ],
+  "started": 1788752924.540334,
+  "ended": 1788752926.7464747,
+  "returncodes": [
+    0
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/accflow-lz4-unified/.libs:/usr/lib64",
+    "LZ4_UADK_QUIET": "1",
+    "LZ4_UADK_HW_CONCURRENCY": "0",
+    "LZ4_BENCH_LOCAL": "1",
+    "LZ4_BENCH_WINDOW_KB": "8"
+  },
+  "completed_descriptors": {
+    "0000:33:00.0": 0,
+    "0000:31:00.0": 0
+  },
+  "before": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 72915297,
+        "HZIP_GET_RIGHT_BD": 72915297,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 72915297,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 34557758,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 34387,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 72913900,
+        "HZIP_GET_RIGHT_BD": 72913900,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 72913900,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 34550558,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 46143,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 63837818,
+        "HZIP_GET_RIGHT_BD": 63837814,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 63837814,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 3187679,
+        "HZIP_MIN_DELAY": 8986,
+        "HZIP_AVG_DELAY": 47294,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 63836744,
+        "HZIP_GET_RIGHT_BD": 63836740,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 63836740,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 4173717,
+        "HZIP_MIN_DELAY": 8980,
+        "HZIP_AVG_DELAY": 54001,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "after": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 72915297,
+        "HZIP_GET_RIGHT_BD": 72915297,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 72915297,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 34557758,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 34387,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 72913900,
+        "HZIP_GET_RIGHT_BD": 72913900,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 72913900,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 34550558,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 46143,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 63837818,
+        "HZIP_GET_RIGHT_BD": 63837814,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 63837814,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 3187679,
+        "HZIP_MIN_DELAY": 8986,
+        "HZIP_AVG_DELAY": 47294,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 63836744,
+        "HZIP_GET_RIGHT_BD": 63836740,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 63836740,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 4173717,
+        "HZIP_MIN_DELAY": 8980,
+        "HZIP_AVG_DELAY": 54001,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "affinity_samples": [
+    [
+      {
+        "pid": 27191,
+        "masks": []
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 27191,
+        "masks": [
+          [
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80,
+            82,
+            84,
+            86
+          ],
+          [
+            2
+          ],
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ],
+          [
+            12
+          ],
+          [
+            14
+          ],
+          [
+            16
+          ],
+          [
+            18
+          ],
+          [
+            20
+          ],
+          [
+            22
+          ],
+          [
+            64
+          ],
+          [
+            66
+          ],
+          [
+            68
+          ],
+          [
+            70
+          ],
+          [
+            72
+          ],
+          [
+            74
+          ],
+          [
+            76
+          ],
+          [
+            78
+          ],
+          [
+            80
+          ],
+          [
+            82
+          ],
+          [
+            84
+          ],
+          [
+            86
+          ]
+        ]
+      }
+    ]
+  ],
+  "stdout": [
+    "sw,24,65536,/root/hch/silesia/dickens,2.000236,13755794816,8701626761,210536,6877.086,47.959049,47.959695,23.977017,0.632579,8,PASS,0\n"
+  ]
+}

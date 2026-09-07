@@ -1,0 +1,2 @@
+# Official benchmark scratch payloads are not valid LZ4 archives or report evidence.
+zip_*.lz77_only

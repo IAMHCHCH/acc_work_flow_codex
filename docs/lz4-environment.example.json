@@ -1,0 +1,15 @@
+{
+  "build_host": "user@BUILD_HOST",
+  "verify_host": "user@VERIFY_HOST",
+  "source_local": "/absolute/path/to/lz4_uadk",
+  "source_build": "/absolute/path/on/build-host/lz4_uadk",
+  "uadk_build": "/absolute/path/on/build-host/uadk",
+  "dependencies_build": "/absolute/path/on/build-host/deps",
+  "runtime_verify": "/tmp/lz4-runtime",
+  "corpus_verify": "/absolute/path/on/verify-host/silesia",
+  "results_verify": "/tmp/lz4-results",
+  "results_local": "reports/lz4-study",
+  "cpu_policy": "NUMA node 0, one logical CPU per physical core, at least 32 physical cores",
+  "kernel_prerequisites": "hisi_zip loaded with uacce_mode=1; accessible ZIP UACCE devices",
+  "notes": "Use SSH keys/agent. No tokens or passwords in this file. Paths are absolute on the indicated host."
+}

@@ -1,1 +1,13 @@
-{"name":"acc-work-flow-codex","version":"0.1.0","description":"Run full development, validation, review, and case-library consolidation workflows for accelerator drivers.","author":{"name":"IAMHCHCH"}}
+{
+  "name": "acc-work-flow-codex", "version": "0.2.0",
+  "description": "Host-native accelerator development, verification and evolving case memory.",
+  "author": {"name": "IAMHCHCH"}, "skills": "./skills/",
+  "interface": {
+    "displayName": "Accelerator Workflow",
+    "shortDescription": "Develop, verify and revise accelerator case knowledge",
+    "longDescription": "Use the current client agent with durable checkpoints, verification evidence and shared cases.",
+    "developerName": "IAMHCHCH", "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": ["Use accflow to complete an accelerator development or diagnosis task."]
+  }
+}

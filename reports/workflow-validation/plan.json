@@ -1,0 +1,14 @@
+{
+  "stages": ["inspect", "verify"],
+  "skip_reasons": {
+    "baseline": "This task validates the new workflow using existing verified hardware binaries",
+    "change": "Read-only analysis of the committed LZ4 artifact and workflow behavior",
+    "build": "Reuse identified binaries from the completed hardware study",
+    "deploy": "No system library or module changes"
+  },
+  "acceptance": [
+    {"id": "framework", "description": "Native workflow integration and failure gates pass real subprocess tests"},
+    {"id": "hardware", "description": "Existing identified LZ4 binary passes all-window native decode and targets only the explicitly selected ZIP device"}
+  ],
+  "rollback": []
+}

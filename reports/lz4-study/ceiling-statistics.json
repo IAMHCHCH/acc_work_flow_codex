@@ -1,0 +1,148 @@
+{
+  "official_experiments": 80,
+  "controlled_experiments": 248,
+  "validated_lz4_runs": 240,
+  "raw_diagnostic_runs": 8,
+  "crossings": {
+    "optimized": {
+      "sync": [
+        29,
+        30
+      ],
+      "async": [
+        29,
+        30
+      ]
+    },
+    "window": {
+      "sync": [
+        52,
+        56
+      ],
+      "async": [
+        52,
+        56
+      ]
+    }
+  },
+  "official_peak": {
+    "repeat": 1,
+    "block": 65536,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": "0,1",
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 1,
+    "name": "official-fine-024",
+    "gbps": 15.98021085184,
+    "completed_descriptors": {
+      "0000:33:00.0": 365818,
+      "0000:31:00.0": 365698
+    },
+    "phase": "official-fine",
+    "device_count": 2,
+    "window_kb": 8
+  },
+  "lz4_peak": {
+    "repeat": 2,
+    "cores": 48,
+    "mode": "async",
+    "depth": 8,
+    "seconds": 2,
+    "cpus": [
+      [
+        0,
+        64,
+        2,
+        66,
+        4,
+        68,
+        6,
+        70,
+        8,
+        72,
+        10,
+        74,
+        12,
+        76,
+        14,
+        78,
+        16,
+        80,
+        18,
+        82,
+        20,
+        84,
+        22,
+        86,
+        24,
+        88,
+        26,
+        90,
+        28,
+        92,
+        30,
+        94,
+        32,
+        96,
+        34,
+        98,
+        36,
+        100,
+        38,
+        102,
+        40,
+        104,
+        42,
+        106,
+        44,
+        108,
+        46,
+        110
+      ]
+    ],
+    "window_kb": 8,
+    "block": 65536,
+    "dataset": "dickens",
+    "name": "window-060",
+    "mbps": 15907.746,
+    "input_bytes": 31836669732,
+    "output_bytes": 19885318506,
+    "calls": 487272,
+    "cpu_cores_used": 47.910277,
+    "validation": "PASS",
+    "completed_descriptors": {
+      "0000:33:00.0": 247536,
+      "0000:31:00.0": 247416
+    },
+    "phase": "window",
+    "gbps": 15.907746,
+    "output_pct": 62.46042275587846,
+    "compression_factor": 1.6010138194363805,
+    "cpu_seconds_per_gb": 3.011757731107852
+  }
+}

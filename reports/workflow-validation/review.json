@@ -1,0 +1,25 @@
+{
+  "status": "ready",
+  "summary": "Current-agent workflow implemented and verified in an isolated clone with 20 integration tests; hardware and independent three-client model sessions are outside this acceptance result.",
+  "findings": [
+    {
+      "title": "Native client-agent lifecycle replaces mandatory preconfigured subprocess orchestration",
+      "component": "accflow/session and cross-client skill",
+      "symptom": "Natural-language analysis failed on profile.artifacts and skill usage required users to supply stage commands; other clients could invoke Codex indirectly.",
+      "root_cause": "The original skill delegated to a headless Runner rather than letting the current client agent own planning, development and verification.",
+      "resolution": "Default start creates a native session driven by the current agent. Fixed acceptance plans, command evidence, source/build hashes, repair and rollback gates lead to verified finish and case maintenance. Analysis may explicitly omit unnecessary build stages. Install the same skill with checkout location metadata for Codex, Claude Code and OpenCode.",
+      "lessons": [
+        "A skill is an agent protocol, not a background worker; the current agent must continue after start returns active.",
+        "Distinguish installed wrappers and local subprocess integration tests from independent client model-session validation.",
+        "Bind verification to current source and build evidence, retain failed runs, and require rollback before retrying partial deployment.",
+        "This finding is validated by 20 local fixture tests; the lab metadata attached at task creation does not imply accelerator hardware validation."
+      ],
+      "failed_attempts": [
+        "Original committed baseline lacks accflow/session.py and produced NATIVE_ENTRY_MISSING.",
+        "Separate hardware preflight after target reboot remains blocked; it was not used as passing evidence."
+      ],
+      "evidence": ["/Users/huangchenghai/codeX_test/acc_work_flow_codex/.accflow/tasks/TASK-070836b344b9/evidence/0005-verify-1.log"]
+    }
+  ],
+  "revisions": []
+}

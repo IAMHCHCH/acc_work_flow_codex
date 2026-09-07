@@ -1,0 +1,76 @@
+[TEST] Stream: 4194304 bytes -> 67779 bytes (1.6%)
+=== LZ4 UADK Test Suite ===
+Version: 1.0.0
+Build: Linux
+Random seed: 12345
+
+
+--- Running test: init ---
+[TEST] Testing init/fini...
+[TEST] PASS: test_init_fini
+
+--- Running test: ctx ---
+[TEST] Testing create/destroy context...
+[TEST] PASS: test_create_destroy_ctx
+
+--- Running test: small ---
+[TEST] Testing compress small data...
+[TEST] Compressed 256 bytes -> 246 bytes
+[TEST] Decompressed 246 bytes -> 256 bytes
+[TEST] PASS: test_compress_small_data
+
+--- Running test: random ---
+[TEST] Testing compress random data (64 KB)...
+[TEST] Random: 64 KB -> 64 KB (100.02%)
+[TEST] PASS: test_compress_random_data
+
+--- Running test: repeated ---
+[TEST] Testing compress repeated data (64 KB)...
+[TEST] Repeated: 64 KB -> 2 KB (3.58%)
+[TEST] PASS: test_compress_repeated_data
+
+--- Running test: text ---
+[TEST] Testing compress text-like data (64 KB)...
+[TEST] Text: 64 KB -> 1 KB (1.84%)
+[TEST] Text: decompressed 65536 bytes
+[TEST] PASS: test_compress_text_data
+
+--- Running test: bound ---
+[TEST] Testing compress bound...
+[TEST] compress_bound(1MB) = 1048640
+[TEST] PASS: test_compress_bound
+
+--- Running test: silesia ---
+[TEST] Testing Silesia roundtrip (chunk_size=4194304)...
+[TEST] PASS: dickens (10192446 -> 5774863 bytes, 56.7%)
+[TEST] PASS: ooffice (6152192 -> 4018806 bytes, 65.3%)
+[TEST] PASS: osdb (10085684 -> 5185142 bytes, 51.4%)
+[TEST] PASS: reymont (6627202 -> 2835165 bytes, 42.8%)
+[TEST] PASS: samba (21606400 -> 7554047 bytes, 35.0%)
+[TEST] PASS: sao (7251944 -> 6239123 bytes, 86.0%)
+[TEST] PASS: webster (41458703 -> 17987833 bytes, 43.4%)
+[TEST] PASS: xml (5345280 -> 1036796 bytes, 19.4%)
+[TEST] PASS: x-ray (8474240 -> 8006405 bytes, 94.5%)
+[TEST] PASS: test_silesia_roundtrip
+
+--- Running test: async ---
+[TEST] Testing async API...
+[TEST] Async: 65536 bytes -> 65548 bytes
+[TEST] PASS: test_async_api
+
+--- Running test: async_batch ---
+[TEST] Testing async batch compress (4 chunks x 256 KB)...
+[TEST] Async batch: 1048576 bytes -> 17556 bytes (1.7%)
+[TEST] PASS: test_async_batch
+
+--- Running test: stream ---
+[TEST] PASS: test_stream_api
+
+--- Running test: large_file ---
+[TEST] Testing large file roundtrip (chunk_size=4194304)...
+[TEST] Large file size: 117194091 bytes
+[TEST] Compressed: 117194091 -> 58632552 bytes (50.0%)
+[TEST] Decompressed: 117194091 bytes
+[TEST] PASS: test_large_file_roundtrip
+
+=== All tests PASSED ===

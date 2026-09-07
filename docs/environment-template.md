@@ -1,44 +1,29 @@
-# 环境配置模板
+# 环境填写方式
 
-`config.local.json` 用于填写实际编译机、验证机和 BMC 信息。它已被 `.gitignore` 忽略，不应提交密码、token 或私钥。
+新环境以 [examples/environment.json](../examples/environment.json) 为模板，填写仓库路径、编译机、验证机和恢复方式，保存为被 Git 忽略的 `config.local.json`。也可以保存到其他位置，再告诉 agent：
 
-```json
-{
-  "repositories": {
-    "kernel": {"path": "/path/to/crypto-2.6", "ref": "<固定提交或标签>", "config": "/path/to/.config"},
-    "uadk": {"path": "/path/to/uadk", "ref": "<固定提交或标签>"},
-    "uadk_engine": {"path": "/path/to/uadk_engine", "ref": "<固定提交或标签>"}
-  },
-  "profile": {
-    "name": "<环境名称>",
-    "environment": {
-      "hardware": "<芯片/加速器型号>",
-      "kernel_release": "<uname -r>",
-      "arch": "aarch64",
-      "build_host": "<user@build-ip>",
-      "verify_host": "<user@verify-ip>",
-      "bmc": "<bmc-ip>"
-    },
-    "deployment_required": true,
-    "deployment_authorized": false,
-    "preflight": [{"argv": ["ssh", "<build-user@build-ip>", "uname -a"]}],
-    "baseline": [{"argv": ["ssh", "<verify-user@verify-ip>", "<reproduce-command>"], "failure_code": 1}],
-    "baseline_expect": "fail",
-    "build": [{"argv": ["ssh", "<build-user@build-ip>", "<build-command>"]}],
-    "deploy": [{"argv": ["ssh", "<verify-user@verify-ip>", "<install-or-modprobe-command>"]}],
-    "verify": [{"argv": ["ssh", "<verify-user@verify-ip>", "<verification-command>"]}],
-    "rollback": [{"argv": ["ssh", "<verify-user@verify-ip>", "<rollback-command>"]}],
-    "artifacts": ["<workspace-relative-artifact-pattern>"]
-  }
-}
+```text
+使用 accflow，环境文件是 /absolute/path/lab-b.json，
+目标仓库为 kernel 和 uadk。请完成：……
 ```
 
-填写步骤：
+| 字段 | 填写内容 |
+|---|---|
+| `repositories.<name>.path` | 本机源码仓库绝对路径 |
+| `repositories.<name>.ref` | 要使用的提交、标签或 HEAD；start 会解析并冻结实际提交 |
+| `repositories.kernel.config` | 编译内核使用的 .config 路径；任务创建时复制并哈希 |
+| `profile.environment.build_host` | 编译机 SSH 别名或 user@host |
+| `profile.environment.verify_host` | 验证机 SSH 别名或 user@host |
+| `hardware / kernel_release / arch` | 已知芯片、内核版本和架构；未知值由 agent 探测补齐 |
+| `devices` | 已知 PCI、NUMA、设备节点映射；动态编号每次现场核对 |
+| `bmc` | 跳板机、控制台地址及端口、重启命令、等待时间、网络恢复方法 |
+| `runtime_strategy` | 临时独立动态库、指定安装目录等运行约束 |
+| `profile.deployment_authorized` | 是否已有本次范围内的部署授权；agent 应复用已有用户授权 |
 
-1. 为每个仓库填写固定提交；不要使用会漂移的 `HEAD`。
-2. 在编译机和验证机分别运行 `uname -a`、`ip addr`、设备节点检查，把结果填入 `environment`。
-3. `baseline` 写可复现的失败命令；已知正常基线则把 `baseline_expect` 改为 `pass`。
-4. 填写真实构建产物、部署和回滚命令。部署默认拒绝，确认回滚可用后才将 `deployment_authorized` 改为 `true`。
-5. 运行 `python3 workflow.py doctor`，再运行 `python3 workflow.py new ...` 和 `python3 workflow.py run TASK-...`。
+不用预先填写 build、verify 命令或 artifacts。这些由 agent 检查 INSTALL、源码与任务需求后制定；需要部署时还会给出具体回滚命令。纯性能分析不强制生成 so/ko。
 
-SSH 推荐使用密钥和 `~/.ssh/config` 别名，避免把密码写入命令。不同实例只需要复制此模板并替换地址、账号、设备节点、内核配置和命令；案例会按硬件、内核版本和架构隔离，避免跨环境误复用。
+SSH 凭据由本机 SSH 配置或客户端的凭据机制管理，不写进 JSON、日志或案例。示例 IP、端口、CPU0 复位方式均需替换为实际环境。可直接给 agent 环境文字说明，让其代填 JSON 并探测缺失信息。
+
+每次开始前应探测当前内核、设备、NUMA、perf_mode 和产物。重启可能清空 /tmp、改变设备编号或模块参数；旧配置是线索，不能代替现场证据。已创建任务的配置不可静默更换，目标环境改变时建立后续任务并关联旧证据。
+
+旧 `start --headless` 批处理仍要求完整逐阶段命令和产物配置，可参考仓库的 `config.json` 与 [agent 协议](agent-protocol.md)。普通三端 Skill 使用上述环境事实模板。

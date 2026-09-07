@@ -1,33 +1,54 @@
-# HiSilicon Accelerator Auto Workflow
+# accflow：海思加速器持续演进工作流
 
-面向海思加速器（Linux 内核、UACCE、UADK）的可恢复开发与问题修复工作流。阶段为 intake、inspect、change、build、deploy、verify、review、consolidate；每次任务生成案例和证据，便于检索、去重和复盘。
+把本工程加载为 Codex、Claude Code 或 OpenCode 的 `accflow` 技能，直接向当前 agent 提任务。**agent 负责规划、开发和调测；框架负责状态、证据、验收门槛以及案例库的修订与去重。** Claude/OpenCode 的主流程不再调用另一个 Codex 模型。
 
-```bash
-python3 workflow.py init
-python3 workflow.py run --request '修复 ZIP 异步压缩超时' --dry-run
-python3 workflow.py consolidate
-```
+[图解原理与完整用法](docs/workflow-guide.md) · [环境 JSON 模板](examples/environment.json) · [agent 内部执行协议](docs/agent-protocol.md)
 
-默认只做仓库状态采集。目标机部署需在适配器中显式配置并关闭 dry-run。验证清单应覆盖 UACCE/IOMMU SVA/SMMU V3/PCI PASID、`CONFIG_CRYPTO_DEV_HISI_*`、设备节点权限、同步异步、并发边界和复位恢复；UADK 构建依据其 INSTALL，内核构建使用 `.config`。
-
-## 配置真实环境
-
-复制 `config.json` 为 `config.local.json`（不要提交），填写固定的硬件、内核版本和架构；为每个阶段提供 `argv` 数组命令。基线故障必须设置 `baseline_expect: fail` 及对应 `failure_code`，构建必须设置 `artifacts`。需要加载 ko 或替换 so 时，同时填写备份/回滚命令，并明确设置 `deployment_authorized: true`。工作流会拒绝未配置环境、缺少回滚、空验证步骤和不完整产物。
-
-常用命令：
+## 一次安装，直接提任务
 
 ```bash
-python3 workflow.py doctor
-python3 workflow.py new --request '...' --kind bugfix --repos kernel,uadk
-python3 workflow.py run TASK-...
-python3 workflow.py status TASK-...
-python3 workflow.py recover TASK-...
-python3 workflow.py search 'ZIP async queue'
-python3 workflow.py consolidate
+python3 workflow.py install --client all
 ```
 
-`doctor` 已显示当前内核工作树有大量未提交文件和未解决冲突；任务只从固定提交克隆隔离副本，因此不会把这些存量修改带入代理工作区。`demo` 是纯 Python 模拟，仅验证编排逻辑，不代表海思硬件通过。
+使用已有 `config.local.json`，或根据环境模板填写仓库路径、SSH 主机、芯片/内核、设备及 BMC 信息。构建和测试命令由 agent 根据具体任务生成，不要求用户预先编写。
 
-自动代理使用 `codex exec --json --output-schema`，每个阶段都有独立 prompt 和结构化报告；官方文档说明该模式适合 CI、支持 JSONL、可恢复会话和显式 sandbox。参考项目：[LangGraph](https://github.com/langchain-ai/langgraph)（持久化状态/恢复）与 [Superpowers](https://github.com/obra/superpowers)（规格、复现、验证、复盘）。
+- Codex：`$accflow 请完成……，验证后给出报告并复盘归档。`
+- Claude Code：`/accflow 请完成……，验证后给出报告并复盘归档。`
+- OpenCode：`加载 accflow skill，请完成……，验证后给出报告并复盘归档。`
 
-验证机断电时可在编译机运行 `scripts/wait_for_target.sh`。它通过 BMC `192.168.90.209:10008` 执行 `sh /home/reset_chip.sh 0`，随后轮询验证机 SSH；脚本不保存密码。长期免手工配置 IP 的正确方案是把 IP 写入验证机 NetworkManager、systemd-networkd 或 ifcfg 配置，并配置 DHCP 保留租约；`~/ip_set.sh` 适合作为一次性修复，不能作为可靠自动化依赖。
+更新本工程后再执行 install 同步技能。`--client codex|claude|opencode` 可单独安装；`--target /path/to/project` 可安装为项目级技能；`install --check` 检查是否为当前版本。需要时重开客户端会话发现新技能。
+
+```mermaid
+flowchart LR
+    U[一句任务] --> A[当前客户端 agent + accflow 技能]
+    A --> P[检查源码 / 检索案例 / 制定验收]
+    P --> C[修改 / 编译 / 按需部署]
+    C --> V[真实验证与证据]
+    V -->|失败| C
+    V -->|通过| R[复盘 / 报告]
+    R --> K[归档 / 修订旧案例 / 去重]
+    K -->|下次任务参考| P
+```
+
+## 什么才算完成
+
+每个任务冻结源提交与环境，使用隔离副本，记录命令、输出和哈希。失败必须定位后有界重试；有部署时先回滚。缺少验收、测试后源码或产物变化、日志被修改，均不能结项。纯分析可说明原因后跳过构建，不再触发不必要的 `profile.artifacts` 要求。
+
+案例库保留根因、修复、失败尝试、适用环境及证据。新的任务可以修订旧结论，保存 before/after 历史，而不是不断追加重复条目。这是经验与流程的持续演进，不是模型权重训练。
+
+原生 `start` 只创建会话并返回 next，**由加载技能的 agent 继续执行**，不是脱离客户端的后台服务。暂停后可让任意已安装客户端继续相同任务 ID。宿主权限、无法恢复的硬件故障和模型能力仍会限制结果；框架不会把阻塞伪装成成功。
+
+## 已完成的真实任务
+
+[UADK 组装 LZ4 性能分析与修复报告](reports/lz4-study/REPORT.md) 保留 423 次严格绑核基线；[双设备带宽与窗口优化报告](reports/lz4-study/CEILING.md) 追加官方 `uadk_tool` 实测约 15.974 GB/s、组装 LZ4 约 15.880 GB/s、单核至 64 核曲线及压缩率取舍。旧 14–15 核交叉点限定为单设备策略，双设备 8 KiB 窗口为 52–56 核。[复现工具说明](docs/controlled-benchmark.md) 和 [其他环境填写模板](docs/lz4-environment.example.json) 随报告提供。LZ4 案例涵盖 6 类问题，修订两条旧案例并保留历史；本次真实任务通过不代表三个 agent 客户端的加载集成均已验证。
+
+## 开发与验证
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 workflow.py demo
+```
+
+新测试覆盖原生会话、真实子进程执行、失败修复、证据防篡改、过期验收、历史修订和三端安装器。demo 是旧批处理的本地模拟，不代表硬件通过。详细测试和客户端验证边界见 [本轮验证记录](reports/workflow-validation/REPORT.md)。
+
+`start --headless` 和 `new/run` 保留旧 Runner，要求完整的逐阶段命令 profile，再启动配置的 Codex CLI/command agent；它是高级批处理选项，不是三端技能的默认路径。实例地址只在本机配置和实验原始证据中保留，其他环境通过模板接入。

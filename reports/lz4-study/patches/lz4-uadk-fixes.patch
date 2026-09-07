@@ -1,0 +1,254 @@
+diff --git a/src/lz4_uadk.c b/src/lz4_uadk.c
+index 8d78ddf..8834870 100644
+--- a/src/lz4_uadk.c
++++ b/src/lz4_uadk.c
+@@ -84,6 +84,7 @@ struct lz4_uadk_ctx {
+     uint64_t total_input;      /** 总输入字节数 */
+     uint64_t total_output;    /** 总输出字节数 */
+     uint32_t num_compressions; /** 压缩次数 */
++    uint32_t num_hw_used;
+     int use_hw;                /** 0=软算, 1=硬算 */
+ 
+     /* 预分配缓冲区（lazy init，按需扩展） */
+@@ -205,17 +206,19 @@ static int init_uadk_v2(int thread_num)
+     int raw_num = (thread_num > 0) ? thread_num : DEFAULT_CTX_NUM;
+     int num_nodes = 1;
+ 
+-    if (thread_num > 0) {
+-        bmp = alloc_numa_bmp();
+-        if (bmp && numa_available() >= 0) {
+-            num_nodes = numa_num_configured_nodes();
+-            if (num_nodes < 1) num_nodes = 1;
+-            params.bmp = bmp;
+-        }
++    /* This UADK init2 path copies the caller's mask without a NULL check. */
++    bmp = alloc_numa_bmp();
++    if (!bmp)
++        return -ENOMEM;
++    if (bmp && numa_available() >= 0) {
++        num_nodes = numa_num_configured_nodes();
++        if (num_nodes < 1) num_nodes = 1;
++        params.bmp = bmp;
+     }
+ 
+     /* sync_ctx_num is per-NUMA-node; divide to get correct total */
+     ctx_num[WD_DIR_COMPRESS].sync_ctx_num = (raw_num + num_nodes - 1) / num_nodes;
++    ctx_num[WD_DIR_COMPRESS].async_ctx_num = (raw_num + num_nodes - 1) / num_nodes;
+     ctx_num[WD_DIR_DECOMPRESS].sync_ctx_num = 0;
+ 
+     params.op_type_num = WD_DIR_MAX;
+@@ -378,6 +381,22 @@ static int assemble_lz4_block(uint8_t *dst, size_t dst_cap,
+         uint32_t real_match = hw_match + 3;
+         uint32_t real_offset = hw_offset + 1;
+ 
++        if (consumed + lit_len > lit_num ||
++            (uint64_t)src_offset + lit_len + real_match > src_len) {
++            *ext_pending_buf = pending_buf;
++            *ext_pending_buf_cap = pending_buf_cap;
++            return -EINVAL;
++        }
++        /* Native LZ4 requires a literal-only tail and the last match to
++         * start at least 12 bytes before the end. Preserve a 12-byte tail. */
++        if (src_len < LZ4_LAST_LITERALS ||
++            src_offset + lit_len + real_match > src_len - LZ4_LAST_LITERALS) {
++            APPEND_PENDING(src + src_offset, src_len - src_offset);
++            src_offset = src_len;
++            consumed = lit_num;
++            break;
++        }
++
+         /* 验证基本约束 */
+         int match_valid = validate_sequence(hw_match, hw_offset);
+         int is_valid = match_valid;
+@@ -388,7 +407,7 @@ static int assemble_lz4_block(uint8_t *dst, size_t dst_cap,
+          * 所以 real_offset 必须 <= 这个值
+          */
+         if (is_valid) {
+-            uint32_t avail = src_offset + pending_lit_len + lit_len;
++            uint32_t avail = src_offset + lit_len;
+             if (real_offset > avail)
+                 is_valid = 0;
+         }
+@@ -748,6 +767,7 @@ void lz4_uadk_fini(void)
+         return;
+     wd_comp_uninit2();
+     g_initialized = 0;
++    g_async_initialized = 0;
+ }
+ 
+ /**
+@@ -945,6 +965,10 @@ static int compress_block(struct lz4_uadk_ctx *c,
+     ret = wd_do_comp_sync(c->uadk_comp_sess, &req);
+     if (g_hw_concurrency > 0) sem_post(&g_hw_sem);
+ 
++    if (ret < 0 || req.status)
++        return ret < 0 ? ret : -EIO;
++    c->num_hw_used++;
++
+     /* 硬件失败时：原样输出 */
+     if (ret < 0 || lz77_data.lit_num == 0 ||
+         lz77_data.literals_start == NULL ||
+@@ -1051,9 +1075,7 @@ int lz4_uadk_compress(lz4_uadk_ctx ctx,
+     size_t block_size = 0;
+     int ret = compress_block(c, src, src_len, &block_size);
+     if (ret < 0)
+-        return write_lz4_frame(dst, dst_len, src, src_len,
+-                              (const uint8_t *)src, src_len,
+-                              0, compressed);
++        return ret;
+ 
+     if (block_size > 0 && block_size < src_len) {
+         return write_lz4_frame(dst, dst_len, src, src_len,
+@@ -1320,7 +1342,7 @@ void lz4_uadk_get_stats(lz4_uadk_ctx ctx, lz4_uadk_stats *stats)
+     stats->total_input = c->total_input;
+     stats->total_output = c->total_output;
+     stats->num_blocks = c->num_compressions;
+-    stats->num_hw_used = 0;
++    stats->num_hw_used = c->num_hw_used;
+     stats->num_sw_fallback = 0;
+ }
+ 
+@@ -1436,53 +1458,11 @@ static void *async_comp_cb(struct wd_comp_req *req, void *cb_param)
+  */
+ static int init_uadk_async(int thread_num)
+ {
+-    int ret;
+-
+-    if (g_initialized) {
+-        /* UADK 已通过 lz4_uadk_init() 初始化，复用 */
++    /* Both APIs share one UADK runtime with sync and async queues. */
++    int init_ret = lz4_uadk_init(thread_num);
++    if (init_ret == 0)
+         g_async_initialized = 1;
+-        return 0;
+-    }
+-
+-    int raw_num = (thread_num > 0) ? thread_num : DEFAULT_CTX_NUM;
+-    struct wd_ctx_nums ctx_num[WD_DIR_MAX];
+-    struct wd_ctx_params params;
+-    struct bitmask *bmp = NULL;
+-    int num_nodes = 1;
+-
+-    if (thread_num > 0) {
+-        bmp = alloc_numa_bmp();
+-        if (bmp && numa_available() >= 0) {
+-            num_nodes = numa_num_configured_nodes();
+-            if (num_nodes < 1) num_nodes = 1;
+-        }
+-    }
+-
+-    int async_num = (raw_num + num_nodes - 1) / num_nodes;
+-
+-    memset(ctx_num, 0, sizeof(ctx_num));
+-    memset(&params, 0, sizeof(params));
+-
+-    ctx_num[WD_DIR_COMPRESS].sync_ctx_num = 0;
+-    ctx_num[WD_DIR_COMPRESS].async_ctx_num = async_num;
+-
+-    params.op_type_num = WD_DIR_MAX;
+-    params.ctx_set_num = ctx_num;
+-    if (bmp)
+-        params.bmp = bmp;
+-
+-    ret = wd_comp_init2_("lz77_only", SCHED_POLICY_RR, TASK_HW, &params);
+-
+-    if (bmp)
+-        numa_free_nodemask(bmp);
+-
+-    if (ret < 0) {
+-        fprintf(stderr, "[LZ4_UADK] async init2_ failed, ret=%d\n", ret);
+-        return ret;
+-    }
+-    g_async_initialized = 1;
+-    g_initialized = 1;
+-    return 0;
++    return init_ret;
+ }
+ 
+ /**
+@@ -1639,12 +1619,14 @@ int lz4_uadk_async_submit(lz4_uadk_async_ctx actx,
+ 
+     /* 构造 async 请求 */
+     memset(&slot->req, 0, sizeof(slot->req));
+-    slot->req.src = (void *)src;
++    /* The request outlives the caller's buffer until poll collects it. */
++    slot->req.src = slot->src_copy;
+     slot->req.src_len = (uint32_t)src_len;
+     slot->req.dst = slot->hw_dst;
+     slot->req.dst_len = (uint32_t)slot->hw_dst_size;
+     slot->req.op_type = WD_DIR_COMPRESS;
+     slot->req.data_fmt = WD_FLAT_BUF;
++    /* Each submission is an independent stateless hardware block. */
+     slot->req.last = 1;
+     slot->req.cb = async_comp_cb;
+     slot->req.cb_param = slot;
+@@ -1725,7 +1707,12 @@ collect:
+         if (!slot)
+             break;
+ 
+-        ctx->collect_seq++;
++        /* Keep the completed slot retryable when the destination is too small. */
++        if (dst_cap - *completed < lz4_uadk_compress_bound(slot->src_len))
++            return processed ? processed : -ENOSPC;
++        if (slot->hw_ret < 0)
++            return slot->hw_ret;
++        size_t previous_completed = *completed;
+ 
+         /* 组装 LZ4 block */
+         if (slot->hw_ret < 0 || slot->lz77_data.lit_num == 0 ||
+@@ -1768,9 +1755,10 @@ collect:
+         }
+ 
+         ctx->total_input += slot->src_len;
+-        ctx->total_output += *completed;
++        ctx->total_output += *completed - previous_completed;
+         ctx->num_blocks++;
+         processed++;
++        ctx->collect_seq++;
+ 
+         /* 标记 slot 空闲 */
+         slot->seq_id = 0;
+diff --git a/test/test_lz4_uadk.c b/test/test_lz4_uadk.c
+index e35ce0c..466a146 100644
+--- a/test/test_lz4_uadk.c
++++ b/test/test_lz4_uadk.c
+@@ -552,7 +552,12 @@ static int test_async_api(void)
+         return -1;
+     }
+ 
+-    ret = lz4_uadk_async_poll(actx, dst, sizeof(dst), &compressed);
++    struct timespec poll_start, poll_now;
++    clock_gettime(CLOCK_MONOTONIC, &poll_start);
++    do {
++        ret = lz4_uadk_async_poll(actx, dst, sizeof(dst), &compressed);
++        clock_gettime(CLOCK_MONOTONIC, &poll_now);
++    } while (ret == 0 && poll_now.tv_sec - poll_start.tv_sec < 5);
+     if (ret < 0) {
+         fprintf(stderr, "[TEST] async_poll failed: %d\n", ret);
+         lz4_uadk_async_destroy(actx);
+@@ -567,6 +572,17 @@ static int test_async_api(void)
+ 
+     lz4_uadk_async_destroy(actx);
+ 
++    uint8_t restored[sizeof(src)];
++    size_t restored_size = 0;
++    lz4_uadk_ctx dctx = lz4_uadk_create_ctx(NULL);
++    TEST_ASSERT(dctx != NULL, "decompression context failed");
++    ret = lz4_uadk_decompress(dctx, dst, compressed, restored,
++                             sizeof(restored), &restored_size);
++    lz4_uadk_destroy_ctx(dctx);
++    lz4_uadk_fini();
++    TEST_ASSERT(ret == 0 && restored_size == sizeof(src) &&
++                memcmp(src, restored, sizeof(src)) == 0, "async roundtrip failed");
++
+     printf("[TEST] Async: %zu bytes -> %zu bytes\n", sizeof(src), compressed);
+     TEST_PASS();
+ }
+@@ -971,4 +987,4 @@ int main(int argc, char *argv[])
+     }
+ 
+     return 0;
+-}
+\ No newline at end of file
++}
+

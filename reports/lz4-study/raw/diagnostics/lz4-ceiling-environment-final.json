@@ -1,0 +1,67 @@
+{
+  "uname": {
+    "argv": [
+      "uname",
+      "-a"
+    ],
+    "returncode": 0,
+    "output": "Linux localhost.localdomain 7.0.0+ #15 SMP PREEMPT Wed Apr 29 11:31:49 CST 2026 aarch64 aarch64 aarch64 GNU/Linux\n"
+  },
+  "lscpu": {
+    "argv": [
+      "lscpu"
+    ],
+    "returncode": 0,
+    "output": "Architecture:                            aarch64\nCPU op-mode(s):                          64-bit\nByte Order:                              Little Endian\nCPU(s):                                  128\nOn-line CPU(s) list:                     0-127\nVendor ID:                               HiSilicon\nBIOS Vendor ID:                          HiSilicon\nModel name:                              Kunpeng 920 7270Z To be filled by O.E.M. CPU @ 2.7GHz\nBIOS Model name:                         Kunpeng 920 7270Z To be filled by O.E.M. CPU @ 2.7GHz\nBIOS CPU family:                         280\nModel:                                   0\nThread(s) per core:                      2\nCore(s) per socket:                      64\nSocket(s):                               1\nStepping:                                0x0\nFrequency boost:                         disabled\nCPU(s) scaling MHz:                      100%\nCPU max MHz:                             2700.0000\nCPU min MHz:                             400.0000\nBogoMIPS:                                200.00\nFlags:                                   fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb dcpodp flagm2 frint svei8mm svef32mm svef64mm svebf16 i8mm bf16 dgh rng ecv\nL1d cache:                               4 MiB (64 instances)\nL1i cache:                               4 MiB (64 instances)\nL2 cache:                                80 MiB (64 instances)\nL3 cache:                                112 MiB (2 instances)\nNUMA node(s):                            2\nNUMA node0 CPU(s):                       0-63\nNUMA node1 CPU(s):                       64-127\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; CSV2, BHB\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n"
+  },
+  "ldd": {
+    "argv": [
+      "ldd",
+      "/tmp/accflow-lz4-unified/controlled_bench"
+    ],
+    "returncode": 0,
+    "output": "\tlinux-vdso.so.1 (0x0000ffffa211c000)\n\tlibwd.so.2 => /tmp/accflow-lz4-unified/.libs/libwd.so.2 (0x0000ffffa2070000)\n\tlibwd_comp.so.2 => /tmp/accflow-lz4-unified/.libs/libwd_comp.so.2 (0x0000ffffa2030000)\n\tlibnuma.so.1 => /usr/lib64/libnuma.so.1 (0x0000ffffa2000000)\n\tliblz4.so.1 => /usr/lib64/liblz4.so.1 (0x0000ffffa1fc0000)\n\tlibc.so.6 => /usr/lib64/libc.so.6 (0x0000ffffa1e10000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffffa20e0000)\n"
+  },
+  "uptime": {
+    "argv": [
+      "uptime"
+    ],
+    "returncode": 0,
+    "output": " 13:50:42 up  4:22,  1 user,  load average: 0.16, 0.13, 0.19\n"
+  },
+  "hashes": {
+    "/tmp/accflow-lz4-unified/controlled_bench": "709fd0592966b805f6ca6cac1e6ab82e6fa492cfe13157a5c966b47b3db0a751",
+    "/tmp/accflow-lz4-unified/test_lz4_uadk": "17c49118cc29c5e301ec375d19404f3d22dc7ffff66fd9a15d5184c0ccf02ba3",
+    "/tmp/accflow-lz4-unified/lz4_async_regression": "bf0f892395ff8eac02792a0fffe17b9364a20222f59cd6a45c26d91b2d46e6a1",
+    "/tmp/accflow-lz4-unified/controlled_bench_numa": "a864e1ab751cd83ae6b7a85241deb33a230004c58cbafa114a980d5ee87b655f",
+    "/tmp/accflow-lz4-unified/controlled_bench_window": "e9084f9cfa6dc1f92f54efda246c7aded5c99af740e4803b76d10be5084bc5ee",
+    "/tmp/accflow-lz4-unified/uadk_tool": "df0a3e28aafd39c7b7f6e44ec03aafbbe5d5d42eab6fbc6b20ec122545999f46",
+    "/tmp/accflow-lz4-unified/lz4_numa_regression": "1137c69bf2b5100571e3b0ecc1f141f82a9d26a182c97bb68503db3c9acc7d2c",
+    "/tmp/accflow-lz4-unified/.libs/libhisi_zip.so.2.11.0": "b60699e5bbe3f405f2e2fb39207e70286e54494bba125a6405c524eafca71b18",
+    "/tmp/accflow-lz4-unified/.libs/libwd_comp.so.2.11.0": "1fff6638f88b868c25c1378e798696571f6972be5332b0e8ab08249811405d86",
+    "/tmp/accflow-lz4-unified/.libs/libwd.so.2.11.0": "1ce5aebf304b567f4d55fcb25c842cb0d47873674878600c26a5ce05a6f685de",
+    "/tmp/accflow-lz4-unified/.libs/uadk/libhisi_zip.so.2.11.0": "b60699e5bbe3f405f2e2fb39207e70286e54494bba125a6405c524eafca71b18",
+    "/usr/lib64/liblz4.so.1": "87f6df85f8c9de3bc87ed393c400eec3868b8b408c4ef83a09173b6c571bd024",
+    "/tmp/accflow-lz4-unified/.libs/libwd_crypto.so.2": "e9db1b0955f2d0850b67fe3e2c1abea42b8cf0394af8fdb9febf28dae6c9d50c"
+  },
+  "zip_parameters": {
+    "uacce_mode": "1",
+    "sgl_sge_nr": "10",
+    "vfs_num": "0",
+    "perf_mode": "1",
+    "pf_q_num": "64"
+  },
+  "devices": {
+    "hisi_zip-0": {
+      "device/numa_node": "1",
+      "available_instances": "64",
+      "algorithms": "zlib\ngzip\ndeflate\nlz77_zstd\nlz77_only"
+    },
+    "hisi_zip-1": {
+      "device/numa_node": "0",
+      "available_instances": "64",
+      "algorithms": "zlib\ngzip\ndeflate\nlz77_zstd\nlz77_only"
+    }
+  },
+  "loaded_runtime_maps": []
+}

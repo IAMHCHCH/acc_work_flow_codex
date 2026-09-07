@@ -1,0 +1,1292 @@
+{
+  "repeat": 1,
+  "block": 4096,
+  "mode": "async",
+  "threads_per_device": 4,
+  "contexts_per_device": 4,
+  "cores": 16,
+  "nodes": [
+    0,
+    1
+  ],
+  "seconds": 5,
+  "cpus": [
+    [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    [
+      64,
+      66,
+      68,
+      70,
+      72,
+      74,
+      76,
+      78
+    ]
+  ],
+  "window": 4,
+  "name": "official-fine-006",
+  "commands": [
+    [
+      "numactl",
+      "--physcpubind=0,2,4,6,8,10,12,14",
+      "--membind=0",
+      "/tmp/accflow-lz4-unified/uadk_tool",
+      "benchmark",
+      "--alg",
+      "lz77_only",
+      "--mode",
+      "sva",
+      "--opt",
+      "0",
+      "--async",
+      "--pktlen",
+      "4096",
+      "--seconds",
+      "5",
+      "--thread",
+      "4",
+      "--ctxnum",
+      "4",
+      "--device",
+      "hisi_zip-1",
+      "--prefetch",
+      "--complevel",
+      "8",
+      "--winsize",
+      "4"
+    ],
+    [
+      "numactl",
+      "--physcpubind=64,66,68,70,72,74,76,78",
+      "--membind=1",
+      "/tmp/accflow-lz4-unified/uadk_tool",
+      "benchmark",
+      "--alg",
+      "lz77_only",
+      "--mode",
+      "sva",
+      "--opt",
+      "0",
+      "--async",
+      "--pktlen",
+      "4096",
+      "--seconds",
+      "5",
+      "--thread",
+      "4",
+      "--ctxnum",
+      "4",
+      "--device",
+      "hisi_zip-0",
+      "--prefetch",
+      "--complevel",
+      "8",
+      "--winsize",
+      "4"
+    ]
+  ],
+  "started": 1788752363.3585346,
+  "ended": 1788752369.5721037,
+  "returncodes": [
+    0,
+    0
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/accflow-lz4-unified/.libs:/usr/lib64",
+    "LZ4_UADK_QUIET": "1",
+    "LZ4_UADK_HW_CONCURRENCY": "0"
+  },
+  "completed_descriptors": {
+    "0000:33:00.0": 8710314,
+    "0000:31:00.0": 8717511
+  },
+  "before": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 27063810,
+        "HZIP_GET_RIGHT_BD": 27063810,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 27063810,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 3041,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 27063505,
+        "HZIP_GET_RIGHT_BD": 27063505,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 27063505,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11705952,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 1815,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 18026151,
+        "HZIP_GET_RIGHT_BD": 18026151,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 18026151,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9601083,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 1796,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 18025913,
+        "HZIP_GET_RIGHT_BD": 18025913,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 18025913,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9977004,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 2547,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "after": {
+    "0000:33:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 31418991,
+        "HZIP_GET_RIGHT_BD": 31418991,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 31418991,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 12452140,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 4004,
+        "HZIP_MEM_VISIBLE_DATA": 2097152,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 31418638,
+        "HZIP_GET_RIGHT_BD": 31418638,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 31418638,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 11705952,
+        "HZIP_MIN_DELAY": 1373,
+        "HZIP_AVG_DELAY": 3980,
+        "HZIP_MEM_VISIBLE_DATA": 8423424,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    },
+    "0000:31:00.0": {
+      "comp_core1": {
+        "HZIP_GET_BD_NUM": 22384966,
+        "HZIP_GET_RIGHT_BD": 22384966,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 22384966,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9601083,
+        "HZIP_MIN_DELAY": 1378,
+        "HZIP_AVG_DELAY": 3989,
+        "HZIP_MEM_VISIBLE_DATA": 134222016,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      },
+      "comp_core0": {
+        "HZIP_GET_BD_NUM": 22384609,
+        "HZIP_GET_RIGHT_BD": 22384609,
+        "HZIP_GET_ERROR_BD": 0,
+        "HZIP_DONE_BD_NUM": 22384609,
+        "HZIP_WORK_CYCLE": 0,
+        "HZIP_IDLE_CYCLE": 0,
+        "HZIP_MAX_DELAY": 9977004,
+        "HZIP_MIN_DELAY": 1376,
+        "HZIP_AVG_DELAY": 3991,
+        "HZIP_MEM_VISIBLE_DATA": 17432576,
+        "HZIP_MEM_VISIBLE_ADDR": 0,
+        "HZIP_CONSUMED_BYTE": 0,
+        "HZIP_PRODUCED_BYTE": 0,
+        "HZIP_COMP_INF": 1,
+        "HZIP_PRE_OUT": 1,
+        "HZIP_BD_RD": 1,
+        "HZIP_BD_WR": 1,
+        "HZIP_GET_BD_AXI_ERR_NUM": 0,
+        "HZIP_GET_BD_PARSE_ERR_NUM": 0,
+        "HZIP_ADD_BD_AXI_ERR_NUM": 0,
+        "HZIP_DECOMP_STF_RELOAD_CURR_ST": 1,
+        "HZIP_DECOMP_LZ77_CURR_ST": 1
+      }
+    }
+  },
+  "affinity_samples": [
+    [
+      {
+        "pid": 15599,
+        "masks": []
+      },
+      {
+        "pid": 15600,
+        "masks": []
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ],
+    [
+      {
+        "pid": 15599,
+        "masks": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        ]
+      },
+      {
+        "pid": 15600,
+        "masks": [
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78
+          ]
+        ]
+      }
+    ]
+  ],
+  "stdout": [
+    "start UADK benchmark test.\n    [--algname]: lz77_only\n    [--mode]:    1\n    [--optype]:  0\n    [--syncmode]:1\n    [--pktlen]:  4096\n    [--seconds]: 5\n    [--thread]:  4\n    [--multi]:   1\n    [--ctxnum]:  4\n    [--algclass]:lz77_only\n    [--acctype]: 2\n    [--prefetch]:1\n    [--engine]:  \n    [--latency]: 0\n    [--init2]:   0\n    [--device]:  hisi_zip-1\n    [--sched]:   0\n    [--task]:    0\nalgname:\tlength:\t\tperf:\t\tiops:\t\tCPU_rate:\nlz77_only\t4096Bytes \t6965015.20KiB/s\t1741.3Kops \t579.80%\ncompress data rate: 100.0%!\n",
+    "start UADK benchmark test.\n    [--algname]: lz77_only\n    [--mode]:    1\n    [--optype]:  0\n    [--syncmode]:1\n    [--pktlen]:  4096\n    [--seconds]: 5\n    [--thread]:  4\n    [--multi]:   1\n    [--ctxnum]:  4\n    [--algclass]:lz77_only\n    [--acctype]: 2\n    [--prefetch]:1\n    [--engine]:  \n    [--latency]: 0\n    [--init2]:   0\n    [--device]:  hisi_zip-0\n    [--sched]:   0\n    [--task]:    0\nalgname:\tlength:\t\tperf:\t\tiops:\t\tCPU_rate:\nlz77_only\t4096Bytes \t6970766.40KiB/s\t1742.7Kops \t589.60%\ncompress data rate: 100.0%!\n"
+  ]
+}

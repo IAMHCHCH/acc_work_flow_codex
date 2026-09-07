@@ -1,0 +1,8 @@
+{
+  "stages": ["inspect", "baseline", "change", "build", "verify"],
+  "skip_reasons": {"deploy": "Local workflow package validation; no system deployment"},
+  "acceptance": [
+    {"id": "integration", "description": "Native lifecycle, evidence gates, case revision and all client install wrappers pass integration tests in the isolated clone"}
+  ],
+  "rollback": []
+}

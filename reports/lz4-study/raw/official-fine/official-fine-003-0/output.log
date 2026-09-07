@@ -1,0 +1,22 @@
+start UADK benchmark test.
+    [--algname]: lz77_only
+    [--mode]:    1
+    [--optype]:  0
+    [--syncmode]:0
+    [--pktlen]:  4096
+    [--seconds]: 5
+    [--thread]:  8
+    [--multi]:   1
+    [--ctxnum]:  8
+    [--algclass]:lz77_only
+    [--acctype]: 2
+    [--prefetch]:1
+    [--engine]:  
+    [--latency]: 0
+    [--init2]:   0
+    [--device]:  hisi_zip-0
+    [--sched]:   0
+    [--task]:    0
+algname:	length:		perf:		iops:		CPU_rate:
+lz77_only	4096Bytes 	6973586.40KiB/s	1743.4Kops 	800.00%
+compress data rate: 100.0%!

@@ -1,0 +1,962 @@
+[
+  {
+    "repeat": 1,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 8,
+    "nodes": [
+      0
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-001",
+    "gbps": 7.1443365888,
+    "completed_descriptors": {
+      "0000:33:00.0": 8721114,
+      "0000:31:00.0": 0
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 8,
+    "nodes": [
+      0
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-002",
+    "gbps": 7.1691173888,
+    "completed_descriptors": {
+      "0000:33:00.0": 8755408,
+      "0000:31:00.0": 0
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 8,
+    "nodes": [
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-003",
+    "gbps": 7.1409524736000005,
+    "completed_descriptors": {
+      "0000:33:00.0": 0,
+      "0000:31:00.0": 8716983
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 8,
+    "nodes": [
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-004",
+    "gbps": 7.1717036032,
+    "completed_descriptors": {
+      "0000:33:00.0": 0,
+      "0000:31:00.0": 8758547
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-005",
+    "gbps": 14.3267037184,
+    "completed_descriptors": {
+      "0000:33:00.0": 8765816,
+      "0000:31:00.0": 8722836
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-006",
+    "gbps": 14.270240358400002,
+    "completed_descriptors": {
+      "0000:33:00.0": 8710314,
+      "0000:31:00.0": 8717511
+    }
+  },
+  {
+    "repeat": 2,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 8,
+    "nodes": [
+      0
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-007",
+    "gbps": 7.1439097856,
+    "completed_descriptors": {
+      "0000:33:00.0": 8720593,
+      "0000:31:00.0": 0
+    }
+  },
+  {
+    "repeat": 2,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 8,
+    "nodes": [
+      0
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-008",
+    "gbps": 7.1854137344,
+    "completed_descriptors": {
+      "0000:33:00.0": 8775312,
+      "0000:31:00.0": 0
+    }
+  },
+  {
+    "repeat": 2,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 8,
+    "nodes": [
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-009",
+    "gbps": 7.1460438016,
+    "completed_descriptors": {
+      "0000:33:00.0": 0,
+      "0000:31:00.0": 8723198
+    }
+  },
+  {
+    "repeat": 2,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 8,
+    "nodes": [
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-010",
+    "gbps": 7.1795728383999995,
+    "completed_descriptors": {
+      "0000:33:00.0": 0,
+      "0000:31:00.0": 8768176
+    }
+  },
+  {
+    "repeat": 2,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-011",
+    "gbps": 14.3113723904,
+    "completed_descriptors": {
+      "0000:33:00.0": 8721254,
+      "0000:31:00.0": 8748683
+    }
+  },
+  {
+    "repeat": 2,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-012",
+    "gbps": 14.2972100608,
+    "completed_descriptors": {
+      "0000:33:00.0": 8733269,
+      "0000:31:00.0": 8727479
+    }
+  },
+  {
+    "repeat": 3,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 8,
+    "nodes": [
+      0
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-013",
+    "gbps": 7.16288,
+    "completed_descriptors": {
+      "0000:33:00.0": 8743750,
+      "0000:31:00.0": 0
+    }
+  },
+  {
+    "repeat": 3,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 8,
+    "nodes": [
+      0
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-014",
+    "gbps": 7.144255488,
+    "completed_descriptors": {
+      "0000:33:00.0": 8725028,
+      "0000:31:00.0": 0
+    }
+  },
+  {
+    "repeat": 3,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 8,
+    "nodes": [
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-015",
+    "gbps": 7.1432675328,
+    "completed_descriptors": {
+      "0000:33:00.0": 0,
+      "0000:31:00.0": 8719809
+    }
+  },
+  {
+    "repeat": 3,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 8,
+    "nodes": [
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-016",
+    "gbps": 7.1792656383999995,
+    "completed_descriptors": {
+      "0000:33:00.0": 0,
+      "0000:31:00.0": 8767798
+    }
+  },
+  {
+    "repeat": 3,
+    "block": 4096,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-017",
+    "gbps": 14.307285401599998,
+    "completed_descriptors": {
+      "0000:33:00.0": 8734626,
+      "0000:31:00.0": 8730322
+    }
+  },
+  {
+    "repeat": 3,
+    "block": 4096,
+    "mode": "async",
+    "threads_per_device": 4,
+    "contexts_per_device": 4,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 5,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-018",
+    "gbps": 14.3058894848,
+    "completed_descriptors": {
+      "0000:33:00.0": 8729650,
+      "0000:31:00.0": 8741700
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 8192,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-019",
+    "gbps": 15.79721250816,
+    "completed_descriptors": {
+      "0000:33:00.0": 2892724,
+      "0000:31:00.0": 2892388
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 16384,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-020",
+    "gbps": 10.620092416,
+    "completed_descriptors": {
+      "0000:33:00.0": 972421,
+      "0000:31:00.0": 972176
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 24576,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-021",
+    "gbps": 9.555542016,
+    "completed_descriptors": {
+      "0000:33:00.0": 583176,
+      "0000:31:00.0": 583272
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 32768,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 4,
+    "name": "official-fine-022",
+    "gbps": 9.129295872,
+    "completed_descriptors": {
+      "0000:33:00.0": 417903,
+      "0000:31:00.0": 417909
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 65536,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 0,
+    "name": "official-fine-023",
+    "gbps": 15.96703812608,
+    "completed_descriptors": {
+      "0000:33:00.0": 365228,
+      "0000:31:00.0": 365685
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 65536,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 1,
+    "name": "official-fine-024",
+    "gbps": 15.98021085184,
+    "completed_descriptors": {
+      "0000:33:00.0": 365818,
+      "0000:31:00.0": 365698
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 65536,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 2,
+    "name": "official-fine-025",
+    "gbps": 8.524005376,
+    "completed_descriptors": {
+      "0000:33:00.0": 195151,
+      "0000:31:00.0": 195047
+    }
+  },
+  {
+    "repeat": 1,
+    "block": 65536,
+    "mode": "sync",
+    "threads_per_device": 8,
+    "contexts_per_device": 8,
+    "cores": 16,
+    "nodes": [
+      0,
+      1
+    ],
+    "seconds": 3,
+    "cpus": [
+      [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      [
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78
+      ]
+    ],
+    "window": 3,
+    "name": "official-fine-026",
+    "gbps": 8.53287457792,
+    "completed_descriptors": {
+      "0000:33:00.0": 195319,
+      "0000:31:00.0": 195285
+    }
+  }
+]

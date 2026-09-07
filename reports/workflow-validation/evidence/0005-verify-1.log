@@ -1,0 +1,25 @@
+test_all_clients_install_and_run_from_unrelated_cwd (test_session.InstallationTests) ... ok
+test_foreign_skill_is_not_overwritten (test_session.InstallationTests) ... ok
+test_analysis_needs_no_build_artifact_or_codex (test_session.SessionTests) ... ok
+test_artifact_mutation_is_rejected (test_session.SessionTests) ... ok
+test_bugfix_build_and_repair (test_session.SessionTests) ... ok
+test_cli_start_and_exec_use_current_agent (test_session.SessionTests) ... ok
+test_dirty_deployment_blocks_retry (test_session.SessionTests) ... ok
+test_failed_command_requires_retry_and_retains_history (test_session.SessionTests) ... ok
+test_failed_deployment_is_rolled_back_before_retry (test_session.SessionTests) ... ok
+test_feature_requires_build_and_baseline (test_session.SessionTests) ... ok
+test_interruption_recovery_requires_new_verification (test_session.SessionTests) ... ok
+test_missing_check_blocks_completion (test_session.SessionTests) ... ok
+test_mutated_log_is_rejected (test_session.SessionTests) ... ok
+test_old_case_amended_and_history_preserved (test_session.SessionTests) ... ok
+test_plan_cannot_drop_acceptance_checks (test_session.SessionTests) ... ok
+test_rollback_without_plan_is_rejected (test_session.SessionTests) ... ok
+test_source_changed_after_build_requires_rebuild (test_session.SessionTests) ... ok
+test_source_changed_after_verify_is_stale (test_session.SessionTests) ... ok
+test_verify_cannot_mutate_source (test_session.SessionTests) ... ok
+test_wrong_check_and_fake_baseline_failure_rejected (test_session.SessionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 12.490s
+
+OK
